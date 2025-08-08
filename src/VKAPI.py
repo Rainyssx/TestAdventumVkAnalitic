@@ -5,8 +5,10 @@ import pandas as pd
 import seaborn as sns
 import numpy as np
 
-vk_session = vk_api.VkApi(token='ad2506acad2506acad2506aceaae1d4a1baad25ad2506acc5b0fb048d178301c389446f')
+vk_session = vk_api.VkApi(token='ВАШ СИСТЕМНЫЙ ТОКЕН')
 vk = vk_session.get_api()
+
+# Страница ВК https://vk.com/souffrantmittelalter
 posts = vk.wall.get(domain='souffrantmittelalter', count=100)['items']
 data = []
 for i, post in enumerate(posts[::-1][:99]):
@@ -59,7 +61,7 @@ sns.barplot(
 plt.title('Среднее количество лайков по интервалам между постами')
 plt.xlabel('Интервал между постами')
 plt.ylabel('Среднее количество лайков')
-plt.savefig('plot1.png')
+plt.savefig('Среднее количество лайков по интервалам между постами.png')
 
 week_labels = [ 'Monday', 'Tuesday' ,'Wednesday' ,'Thursday' ,'Friday' ,'Saturday', 'Sunday']
 
@@ -74,7 +76,7 @@ sns.barplot(
 plt.title('Среднее количество лайков по дням недели')
 plt.xlabel('День недели')
 plt.ylabel('Среднее количество лайков')
-plt.savefig('plot2.png')
+plt.savefig('Среднее количество лайков по дням недели.png')
 
 plt.figure(figsize=(10, 6))
 sns.barplot(
@@ -86,5 +88,5 @@ sns.barplot(
 plt.title('Среднее количество лайков по часам')
 plt.xlabel('Час')
 plt.ylabel('Среднее количество лайков')
-plt.savefig('plot.png')
+plt.savefig('Среднее количество лайков по часам.png')
 df.to_csv("Данные вк")
